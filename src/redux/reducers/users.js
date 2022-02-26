@@ -1,0 +1,22 @@
+import { ADD_USER } from "../actionTypes";
+
+const initialState = {
+    users: []
+}
+
+export default function usersReducer(state = initialState, action) {
+    console.log('received action', action)
+    switch (action.type){
+        case ADD_USER: {
+        return {
+            ...state,
+            todos: [...state.users, {
+                name: action.payload.name
+            }]
+        }
+    }
+        default: {
+            return  state
+        }
+    }
+}

@@ -1,23 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { selectorTodos } from './redux/selectors'
+import { addTodo } from './redux/actions'
 
 function App() {
+  // useSelector(store => store.todoState.todos)
+  const todos = useSelector(selectorTodos);
+  const dispatch = useDispatch();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => {
+        dispatch(addTodo( Math.random() ))
+      }}> add todo </button>
+      <ul>
+      {todos.map(todo => <li> id: {todo.id} ; name: {todo.name}</li>)}
+      </ul>
     </div>
   );
 }
