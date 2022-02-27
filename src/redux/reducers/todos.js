@@ -9,7 +9,6 @@ const initialState = {
 
 
 export default function todosReducer(state = initialState, action) {
-    console.log('received action', action)
     switch (action.type){
         case ADD_TODO: {
         return {

@@ -5,7 +5,6 @@ const initialState = {
 }
 
 export default function usersReducer(state = initialState, action) {
-    console.log('received action', action)
     switch (action.type){
         case ADD_USER: {
         return {
